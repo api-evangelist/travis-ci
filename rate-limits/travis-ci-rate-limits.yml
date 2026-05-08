@@ -5,7 +5,7 @@ provider: Travis CI
 providerId: travis-ci
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - DevOps
 - CI/CD
@@ -15,21 +15,48 @@ tags:
 - Rate Limiting
 - Quotas
 - Throttling
-description: Placeholder rate-limit artifact for Travis CI. Replace with real limits once researched.
-notes: Initial scaffold — limits have not yet been reconciled.
+description: >-
+  Travis CI's primary throttling mechanisms are (a) the per-plan build credit
+  budget (35K/mo Usage Based, unlimited on Unlimited plans, OSS allotment) and
+  (b) the per-plan concurrent-job ceiling. The REST API itself returns 429
+  with Retry-After when abused.
+notes: >-
+  Travis CI has historically not published a per-second numeric REST API rate
+  limit; the dominant throttle is build-credit consumption and concurrent-job
+  count, which align directly with plan tier. Public docs do call out 429.
 sources:
-- https://www.travis-ci.com/
+- https://docs.travis-ci.com/user/billing-overview/
+- https://www.travis-ci.com/pricing/
+- https://developer.travis-ci.com/
 responseCodes:
   throttled: 429
 limits:
-- name: Default
+- name: Concurrent jobs (Usage Based)
   scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+  metric: concurrent_jobs
+  limit: 80
+  notes: Usage Based plan.
+- name: Concurrent jobs (Unlimited)
+  scope: account
+  metric: concurrent_jobs
+  limit: 300
+  notes: Unlimited plan.
+- name: Linux build credits (Usage Based monthly)
+  scope: account
+  metric: credits/month
+  limit: 35000
+  notes: 35K Linux build credits / month on Usage Based; 420K / year on annual.
+- name: REST API requests
+  scope: api_token
+  metric: requests
+  limit: see Travis docs
+  timeFrame: window
+  notes: Per-token throttle; 429 with Retry-After. Numeric ceilings not publicly enumerated.
 policies:
 - name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  description: Honor Retry-After on 429; use exponential backoff with jitter.
+- name: Required Headers
+  description: User-Agent, Accept (versioned), Authorization required for full access.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

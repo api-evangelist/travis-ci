@@ -5,7 +5,7 @@ provider: Travis CI
 providerId: travis-ci
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - DevOps
 - CI/CD
@@ -13,29 +13,134 @@ tags:
 - Open Source
 - Hosted
 - Plans
-description: Placeholder plans/pricing artifact for Travis CI. Replace with real published pricing once
-  the pipeline researches the provider's plans page.
-notes: Initial scaffold — plans/pricing have not yet been reconciled.
+- Pricing
+description: >-
+  Travis CI sells three primary plans — Usage Based, Unlimited and Server
+  (Enterprise) — with monthly or annual billing. Open-source projects can run
+  for free via the OSS plan with a credit allotment. Volume discounts apply for
+  20+ user teams; custom enterprise pricing also available.
+notes: >-
+  Numeric prices below reflect the public Travis CI pricing page as of
+  2026-05-08. Annual prices include the 8% advertised discount.
 sources:
-- https://www.travis-ci.com/
+- https://www.travis-ci.com/pricing/
+- https://docs.travis-ci.com/user/billing-overview/
 plans:
-- id: travis-ci-default
-  name: To Be Reconciled
-  type: enterprise
-  description: Initial scaffold; replace with provider plan tiers once pricing is reconciled.
+- id: travis-oss
+  name: Open Source
+  type: free
+  description: Free CI for open-source repositories with a per-organization credit allotment.
   entries:
-  - label: API Access
-    name: api_access
+  - label: Open source
+    name: oss
     type: flat
-    metric: varies
+    metric: license
     limit: -1
-    timeFrame: usage
+    timeFrame: monthly
     geo: global
     unit: 1
-    price: see https://www.travis-ci.com/
+    price: 0
     userMultiplied: false
-  elements:
-  - name: Pending Reconciliation
+- id: travis-usage-monthly
+  name: Usage Based — Monthly
+  type: subscription
+  description: $15/mo. 35,000 Linux build credits/month, 80 concurrent jobs, premium VM access.
+  entries:
+  - label: Plan price
+    name: monthly_price
+    type: flat
+    metric: month
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 15
+    currency: USD
+    userMultiplied: false
+  - label: Linux build credits
+    name: build_credits
+    type: tier
+    metric: credits/month
+    limit: 35000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 0
+    userMultiplied: false
+- id: travis-usage-annual
+  name: Usage Based — Annual
+  type: subscription
+  description: $13.75/mo (annual billing). 420,000 Linux build credits/year, 80 concurrent jobs, premium VM access. (8% discount)
+  entries:
+  - label: Plan price
+    name: monthly_price_annual
+    type: flat
+    metric: month
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 13.75
+    currency: USD
+    userMultiplied: false
+  - label: Linux build credits
+    name: build_credits
+    type: tier
+    metric: credits/year
+    limit: 420000
+    timeFrame: annual
+    geo: global
+    unit: 1
+    price: 0
+    userMultiplied: false
+- id: travis-unlimited-monthly
+  name: Unlimited — Monthly
+  type: subscription
+  description: $78+/mo. Unlimited build credits, collaborators, repositories; up to 300 concurrent jobs.
+  entries:
+  - label: Plan price (starting)
+    name: monthly_price
+    type: flat
+    metric: month
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 78
+    currency: USD
+    userMultiplied: false
+- id: travis-unlimited-annual
+  name: Unlimited — Annual
+  type: subscription
+  description: $72+/mo (annual). Unlimited credits/collab/repos; up to 300 concurrent jobs.
+  entries:
+  - label: Plan price (starting)
+    name: monthly_price_annual
+    type: flat
+    metric: month
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 72
+    currency: USD
+    userMultiplied: false
+- id: travis-server
+  name: Server (On-Prem / Private Cloud)
+  type: enterprise
+  description: $34/mo Server plan for on-prem or private cloud deployments; supports Perforce and Subversion. Volume / enterprise discounts available.
+  entries:
+  - label: Plan price
+    name: monthly_price
+    type: flat
+    metric: month
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 34
+    currency: USD
+    userMultiplied: false
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

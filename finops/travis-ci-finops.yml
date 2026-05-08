@@ -5,7 +5,7 @@ provider: Travis CI
 providerId: travis-ci
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - DevOps
 - CI/CD
@@ -15,10 +15,20 @@ tags:
 - FinOps
 - Cost Management
 - FOCUS
-description: FOCUS-aligned FinOps placeholder for Travis CI. Pipeline will replace with real billing details.
-notes: Initial scaffold — billing model has not yet been reconciled.
+description: >-
+  FOCUS-aligned FinOps profile for Travis CI. Billing is plan-based with build
+  credit consumption tracked against the plan's monthly/annual budget;
+  Unlimited plans bill a flat seat fee. Server (on-prem) plans bill a flat
+  monthly per-instance fee. The customer's own infrastructure cost applies
+  only to Server deployments.
+notes: >-
+  Build credits are the unit of consumption inside Travis. Premium VM jobs
+  consume credits at higher rates than Linux jobs; macOS / Windows / GPU
+  multipliers vary. The Travis dashboard exposes a per-organization usage page
+  for chargeback.
 sources:
-- https://www.travis-ci.com/
+- https://www.travis-ci.com/pricing/
+- https://docs.travis-ci.com/user/billing-overview/
 - https://focus.finops.org/focus-specification/v1-3/
 alignedWith:
   framework: FinOps Foundation Framework
@@ -27,10 +37,10 @@ alignedWith:
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 publisherName: Travis CI
-serviceCategory: DevOps
+serviceCategory: DevOps / CI/CD
 billingModel:
-  pricingCategory: To Be Reconciled
-  billingFrequency: Monthly
+  pricingCategory: Subscription + Usage
+  billingFrequency: Monthly / Annual
   billingCurrency: USD
   chargeCategories:
   - Usage
@@ -44,23 +54,44 @@ focusColumns:
   InvoiceIssuerName: Travis CI
   BillingCurrency: USD
   ChargeCategory: Usage
+  PricingUnit: build-credit
 meters:
-- name: api_usage
-  description: Catch-all meter pending reconciliation.
-  unit: varies
+- name: build_credits
+  description: Linux/macOS/Windows/GPU build credits consumed by jobs.
+  unit: credit
+  aggregation: sum
+  dimensions:
+  - organization
+  - repository
+  - os
+- name: concurrent_jobs
+  description: Peak concurrent jobs.
+  unit: jobs
+  aggregation: max
+  dimensions:
+  - organization
+- name: subscription_seat
+  description: Monthly/annual subscription fee per plan.
+  unit: month
+  aggregation: sum
+  dimensions:
+  - organization
+  - plan
+- name: server_instance_month
+  description: On-prem Travis CI Server license fee per instance.
+  unit: instance-month
   aggregation: sum
   dimensions:
   - account
-  - resource
 principles:
 - name: Visibility
-  description: Pull provider invoices or usage exports until a self-serve usage feed is documented.
+  description: Use the Travis CI organization Usage page; reconcile against monthly invoice.
 - name: Allocation
-  description: Tag invoice line items to consuming business units in your FinOps store.
+  description: Allocate by organization, then by repository; map to FOCUS ResourceTag.
 - name: Optimization
-  description: Levers depend on the provider's billing model; review at renewal once reconciled.
+  description: Cache aggressively; gate slow tests; use Linux instead of premium VMs where viable; right-size plan to actual concurrency.
 - name: Accountability
-  description: Assign a contract owner to review billing against negotiated terms.
+  description: Assign organization owners; alert on credit burn-down toward plan ceiling.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

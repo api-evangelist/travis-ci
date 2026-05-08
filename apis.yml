@@ -3,7 +3,10 @@ url: https://raw.githubusercontent.com/api-evangelist/travis-ci/refs/heads/main/
 name: Travis CI
 x-type: company
 description: >-
-  Travis CI is a hosted continuous integration service supporting GitHub, GitLab, and Bitbucket projects with cloud and on-prem options.
+  Travis CI is a hosted continuous integration service supporting GitHub,
+  GitLab and Bitbucket. Two REST APIs are available: the legacy v2/v2.1 API
+  (deprecated) and the current v3 API used by the web UI. Travis CI is also
+  available as Enterprise (on-premises) and Server (private cloud).
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - DevOps
@@ -11,13 +14,65 @@ tags:
   - Build
   - Open Source
   - Hosted
+  - GitHub
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: travis-ci:v3
+    name: Travis CI REST API v3
+    description: >-
+      Current REST API used by the Travis CI web UI. 50+ resource types covering
+      builds, jobs, repositories, users, organizations, crons, caches,
+      environment variables, requests and config validation. Hypermedia,
+      eager/partial loading and pagination supported. Token-based auth obtained
+      via GitHub OAuth.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.travis-ci.com/
+    baseURL: https://api.travis-ci.com
+    tags:
+      - REST
+      - v3
+      - Builds
+      - Jobs
+      - Repos
+    properties:
+      - type: Documentation
+        url: https://developer.travis-ci.com/
+      - type: APIExplorer
+        url: https://developer.travis-ci.com/explore/
+      - type: Authentication
+        url: https://developer.travis-ci.com/authentication
+  - aid: travis-ci:v2
+    name: Travis CI REST API v2.1 (deprecated)
+    description: >-
+      Legacy v2/v2.1 REST API; superseded by v3 but still in use. Builds, jobs,
+      branches, logs, env vars, caches, SSH keys, requests. Authenticated via
+      Bearer access tokens exchanged with GitHub.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.travis-ci.com/api/
+    baseURL: https://api.travis-ci.com
+    tags:
+      - REST
+      - v2.1
+      - Deprecated
+      - Builds
+    properties:
+      - type: Documentation
+        url: https://docs.travis-ci.com/api/
+      - type: DeprecationNotice
+        url: https://blog.travis-ci.com/2018-01-22-api-v2.1-deprecation
 common:
   - type: Website
     url: https://www.travis-ci.com/
+  - type: Documentation
+    url: https://docs.travis-ci.com/
+  - type: Pricing
+    url: https://www.travis-ci.com/pricing/
+  - type: GitHub
+    url: https://github.com/travis-ci
+  - type: StatusPage
+    url: https://www.traviscistatus.com/
   - type: Plans
     url: plans/travis-ci-plans-pricing.yml
   - type: RateLimits
