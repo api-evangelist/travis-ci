@@ -1,0 +1,29 @@
+aid: travis-ci
+url: https://raw.githubusercontent.com/api-evangelist/travis-ci/refs/heads/main/apis.yml
+name: Travis CI
+x-type: company
+description: >-
+  Travis CI is a hosted continuous integration service supporting GitHub, GitLab, and Bitbucket projects with cloud and on-prem options.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - DevOps
+  - CI/CD
+  - Build
+  - Open Source
+  - Hosted
+created: '2026-05-08'
+modified: '2026-05-08'
+specificationVersion: '0.19'
+apis: []
+common:
+  - type: Website
+    url: https://www.travis-ci.com/
+  - type: Plans
+    url: plans/travis-ci-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/travis-ci-rate-limits.yml
+  - type: FinOps
+    url: finops/travis-ci-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
