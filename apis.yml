@@ -1,7 +1,7 @@
 aid: travis-ci
 url: https://raw.githubusercontent.com/api-evangelist/travis-ci/refs/heads/main/apis.yml
 name: Travis CI
-x-type: company
+kind: company
 description: >-
   Travis CI is a hosted continuous integration service supporting GitHub,
   GitLab and Bitbucket. Two REST APIs are available: the legacy v2/v2.1 API
