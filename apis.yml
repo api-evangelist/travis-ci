@@ -63,6 +63,8 @@ apis:
       - type: DeprecationNotice
         url: https://blog.travis-ci.com/2018-01-22-api-v2.1-deprecation
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/travis-ci
   - type: Website
     url: https://www.travis-ci.com/
   - type: Documentation
