@@ -1,0 +1,480 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Travis CI REST API v3",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Builds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List builds for the current user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/builds"
+          },
+          "docs": "List builds for the current user"
+        },
+        {
+          "info": {
+            "name": "List builds for a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/repo/:provider/:repository_id/builds",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List builds for a repository"
+        },
+        {
+          "info": {
+            "name": "List builds for a repository by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/repo/:repository_id/builds",
+            "params": [
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List builds for a repository by id"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Repositories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Find a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/repo/:provider/:repository_id",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Find a repository"
+        },
+        {
+          "info": {
+            "name": "Find a repository by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/repo/:repository_id",
+            "params": [
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Find a repository by id"
+        },
+        {
+          "info": {
+            "name": "Activate a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.travis-ci.com/repo/:repository_id/activate",
+            "params": [
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Activate a repository"
+        },
+        {
+          "info": {
+            "name": "Deactivate a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.travis-ci.com/repo/:repository_id/deactivate",
+            "params": [
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deactivate a repository"
+        },
+        {
+          "info": {
+            "name": "Star a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.travis-ci.com/repo/:repository_id/star",
+            "params": [
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Star a repository"
+        },
+        {
+          "info": {
+            "name": "Unstar a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.travis-ci.com/repo/:repository_id/unstar",
+            "params": [
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Unstar a repository"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/job/:job_id",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a job"
+        },
+        {
+          "info": {
+            "name": "Cancel a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.travis-ci.com/job/:job_id/cancel",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel a job"
+        },
+        {
+          "info": {
+            "name": "Restart a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.travis-ci.com/job/:job_id/restart",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Restart a job"
+        },
+        {
+          "info": {
+            "name": "Debug a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.travis-ci.com/job/:job_id/debug",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Debug a job"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a job log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/job/:job_id/log",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a job log"
+        },
+        {
+          "info": {
+            "name": "Delete a job log",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.travis-ci.com/job/:job_id/log",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a job log"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the current user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/user"
+          },
+          "docs": "Get the current user"
+        },
+        {
+          "info": {
+            "name": "Update the current user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.travis-ci.com/user"
+          },
+          "docs": "Update the current user"
+        },
+        {
+          "info": {
+            "name": "Get a user by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/user/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a user by id"
+        },
+        {
+          "info": {
+            "name": "Trigger a user sync with GitHub",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.travis-ci.com/user/:user_id/sync",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Trigger a user sync with GitHub"
+        },
+        {
+          "info": {
+            "name": "Log out the current user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/logout"
+          },
+          "docs": "Log out the current user"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Find an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/org/:organization_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Find an organization"
+        },
+        {
+          "info": {
+            "name": "Suspend an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.travis-ci.com/org/:organization_id/suspend",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Suspend an organization"
+        },
+        {
+          "info": {
+            "name": "Unsuspend an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.travis-ci.com/org/:organization_id/unsuspend",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Unsuspend an organization"
+        },
+        {
+          "info": {
+            "name": "Organization user activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/org/:organization_id/user_activity",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Organization user activity"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
