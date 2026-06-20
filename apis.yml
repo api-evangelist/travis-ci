@@ -7,7 +7,7 @@ description: >-
   GitLab and Bitbucket. Two REST APIs are available: the legacy v2/v2.1 API
   (deprecated) and the current v3 API used by the web UI. Travis CI is also
   available as Enterprise (on-premises) and Server (private cloud).
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - DevOps
   - CI/CD
@@ -27,7 +27,7 @@ apis:
       environment variables, requests and config validation. Hypermedia,
       eager/partial loading and pagination supported. Token-based auth obtained
       via GitHub OAuth.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.travis-ci.com/
     baseURL: https://api.travis-ci.com
     tags:
@@ -49,7 +49,7 @@ apis:
       Legacy v2/v2.1 REST API; superseded by v3 but still in use. Builds, jobs,
       branches, logs, env vars, caches, SSH keys, requests. Authenticated via
       Bearer access tokens exchanged with GitHub.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.travis-ci.com/api/
     baseURL: https://api.travis-ci.com
     tags:
