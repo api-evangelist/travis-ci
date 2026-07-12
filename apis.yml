@@ -63,6 +63,10 @@ apis:
       - type: DeprecationNotice
         url: https://blog.travis-ci.com/2018-01-22-api-v2.1-deprecation
 common:
+  - type: DomainSecurity
+    url: security/travis-ci-domain-security.yml
+  - type: Authentication
+    url: authentication/travis-ci-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/travis-ci
   - type: Website
@@ -81,6 +85,8 @@ common:
     url: rate-limits/travis-ci-rate-limits.yml
   - type: FinOps
     url: finops/travis-ci-finops.yml
+  - url: https://www.travis-ci.com/feed/
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

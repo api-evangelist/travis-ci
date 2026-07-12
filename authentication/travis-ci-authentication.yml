@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/travis-ci-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: TravisToken
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: |-
+    Token-based authentication. Header format: `Authorization: token <TOKEN>`
+    with `Travis-API-Version: 3`. Tokens for travis-ci.com, travis-ci.org,
+    and Enterprise installations are not interchangeable.
+  sources:
+  - openapi/travis-ci-openapi.yml
