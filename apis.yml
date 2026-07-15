@@ -63,6 +63,8 @@ apis:
       - type: DeprecationNotice
         url: https://blog.travis-ci.com/2018-01-22-api-v2.1-deprecation
 common:
+  - type: AgenticAccess
+    url: agentic-access/travis-ci-agentic-access.yml
   - type: DomainSecurity
     url: security/travis-ci-domain-security.yml
   - type: Authentication
