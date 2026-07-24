@@ -1,0 +1,78 @@
+openapi: 3.1.0
+info:
+  title: Travis CI REST API v3 Builds API
+  version: '3'
+  description: 'Travis CI v3 REST API for builds, jobs, repositories, organizations, users,
+
+    and logs. Endpoints and authentication derived from
+
+    https://developer.travis-ci.com/.
+
+    '
+  contact:
+    name: Travis CI
+    url: https://developer.travis-ci.com/
+servers:
+- url: https://api.travis-ci.com
+  description: Travis CI (private projects / .com)
+- url: https://api.travis-ci.org
+  description: Travis CI (open source / .org, legacy)
+security:
+- TravisToken: []
+tags:
+- name: Builds
+paths:
+  /builds:
+    get:
+      tags:
+      - Builds
+      summary: List builds for the current user
+      responses:
+        '200':
+          description: List of builds
+  /repo/{provider}/{repository_id}/builds:
+    get:
+      tags:
+      - Builds
+      summary: List builds for a repository
+      parameters:
+      - in: path
+        name: provider
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: repository_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Builds
+  /repo/{repository_id}/builds:
+    get:
+      tags:
+      - Builds
+      summary: List builds for a repository by id
+      parameters:
+      - in: path
+        name: repository_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Builds
+components:
+  securitySchemes:
+    TravisToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Token-based authentication. Header format: `Authorization: token <TOKEN>`
+
+        with `Travis-API-Version: 3`. Tokens for travis-ci.com, travis-ci.org,
+
+        and Enterprise installations are not interchangeable.
+
+        '

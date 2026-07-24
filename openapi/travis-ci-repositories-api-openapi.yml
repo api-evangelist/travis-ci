@@ -1,0 +1,126 @@
+openapi: 3.1.0
+info:
+  title: Travis CI REST API v3 Builds Repositories API
+  version: '3'
+  description: 'Travis CI v3 REST API for builds, jobs, repositories, organizations, users,
+
+    and logs. Endpoints and authentication derived from
+
+    https://developer.travis-ci.com/.
+
+    '
+  contact:
+    name: Travis CI
+    url: https://developer.travis-ci.com/
+servers:
+- url: https://api.travis-ci.com
+  description: Travis CI (private projects / .com)
+- url: https://api.travis-ci.org
+  description: Travis CI (open source / .org, legacy)
+security:
+- TravisToken: []
+tags:
+- name: Repositories
+paths:
+  /repo/{provider}/{repository_id}:
+    get:
+      tags:
+      - Repositories
+      summary: Find a repository
+      parameters:
+      - in: path
+        name: provider
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: repository_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Repository
+  /repo/{repository_id}:
+    get:
+      tags:
+      - Repositories
+      summary: Find a repository by id
+      parameters:
+      - in: path
+        name: repository_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Repository
+  /repo/{repository_id}/activate:
+    post:
+      tags:
+      - Repositories
+      summary: Activate a repository
+      parameters:
+      - in: path
+        name: repository_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Activated
+  /repo/{repository_id}/deactivate:
+    post:
+      tags:
+      - Repositories
+      summary: Deactivate a repository
+      parameters:
+      - in: path
+        name: repository_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Deactivated
+  /repo/{repository_id}/star:
+    post:
+      tags:
+      - Repositories
+      summary: Star a repository
+      parameters:
+      - in: path
+        name: repository_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Starred
+  /repo/{repository_id}/unstar:
+    post:
+      tags:
+      - Repositories
+      summary: Unstar a repository
+      parameters:
+      - in: path
+        name: repository_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Unstarred
+components:
+  securitySchemes:
+    TravisToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Token-based authentication. Header format: `Authorization: token <TOKEN>`
+
+        with `Travis-API-Version: 3`. Tokens for travis-ci.com, travis-ci.org,
+
+        and Enterprise installations are not interchangeable.
+
+        '

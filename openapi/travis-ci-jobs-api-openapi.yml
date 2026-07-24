@@ -1,0 +1,93 @@
+openapi: 3.1.0
+info:
+  title: Travis CI REST API v3 Builds Jobs API
+  version: '3'
+  description: 'Travis CI v3 REST API for builds, jobs, repositories, organizations, users,
+
+    and logs. Endpoints and authentication derived from
+
+    https://developer.travis-ci.com/.
+
+    '
+  contact:
+    name: Travis CI
+    url: https://developer.travis-ci.com/
+servers:
+- url: https://api.travis-ci.com
+  description: Travis CI (private projects / .com)
+- url: https://api.travis-ci.org
+  description: Travis CI (open source / .org, legacy)
+security:
+- TravisToken: []
+tags:
+- name: Jobs
+paths:
+  /job/{job_id}:
+    get:
+      tags:
+      - Jobs
+      summary: Get a job
+      parameters:
+      - in: path
+        name: job_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Job
+  /job/{job_id}/cancel:
+    post:
+      tags:
+      - Jobs
+      summary: Cancel a job
+      parameters:
+      - in: path
+        name: job_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Cancelled
+  /job/{job_id}/restart:
+    post:
+      tags:
+      - Jobs
+      summary: Restart a job
+      parameters:
+      - in: path
+        name: job_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Restarted
+  /job/{job_id}/debug:
+    post:
+      tags:
+      - Jobs
+      summary: Debug a job
+      parameters:
+      - in: path
+        name: job_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Debug started
+components:
+  securitySchemes:
+    TravisToken:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Token-based authentication. Header format: `Authorization: token <TOKEN>`
+
+        with `Travis-API-Version: 3`. Tokens for travis-ci.com, travis-ci.org,
+
+        and Enterprise installations are not interchangeable.
+
+        '
