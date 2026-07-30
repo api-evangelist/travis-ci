@@ -7,7 +7,20 @@ description: >-
   GitLab and Bitbucket. Two REST APIs are available: the legacy v2/v2.1 API
   (deprecated) and the current v3 API used by the web UI. Travis CI is also
   available as Enterprise (on-premises) and Server (private cloud).
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/travis-ci.png
 tags:
   - DevOps
   - CI/CD
@@ -19,49 +32,106 @@ created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
 apis:
-  - aid: travis-ci:v3
-    name: Travis CI REST API v3
-    description: >-
-      Current REST API used by the Travis CI web UI. 50+ resource types covering
-      builds, jobs, repositories, users, organizations, crons, caches,
-      environment variables, requests and config validation. Hypermedia,
-      eager/partial loading and pagination supported. Token-based auth obtained
-      via GitHub OAuth.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developer.travis-ci.com/
-    baseURL: https://api.travis-ci.com
-    tags:
-      - REST
-      - v3
-      - Builds
-      - Jobs
-      - Repos
-    properties:
-      - type: Documentation
-        url: https://developer.travis-ci.com/
-      - type: APIExplorer
-        url: https://developer.travis-ci.com/explore/
-      - type: Authentication
-        url: https://developer.travis-ci.com/authentication
-  - aid: travis-ci:v2
-    name: Travis CI REST API v2.1 (deprecated)
-    description: >-
-      Legacy v2/v2.1 REST API; superseded by v3 but still in use. Builds, jobs,
-      branches, logs, env vars, caches, SSH keys, requests. Authenticated via
-      Bearer access tokens exchanged with GitHub.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.travis-ci.com/api/
-    baseURL: https://api.travis-ci.com
-    tags:
-      - REST
-      - v2.1
-      - Deprecated
-      - Builds
-    properties:
-      - type: Documentation
-        url: https://docs.travis-ci.com/api/
-      - type: DeprecationNotice
-        url: https://blog.travis-ci.com/2018-01-22-api-v2.1-deprecation
+- aid: travis-ci:v3
+  name: Travis CI REST API v3
+  description: >-
+    Current REST API used by the Travis CI web UI. 50+ resource types covering builds, jobs, repositories,
+    users, organizations, crons, caches, environment variables, requests and config validation. Hypermedia,
+    eager/partial loading and pagination supported. Token-based auth obtained via GitHub OAuth.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.travis-ci.com/
+  baseURL: https://api.travis-ci.com
+  tags:
+  - REST
+  - v3
+  - Builds
+  - Jobs
+  - Repos
+  properties:
+  - type: Documentation
+    url: https://developer.travis-ci.com/
+  - type: APIExplorer
+    url: https://developer.travis-ci.com/explore/
+  - type: Authentication
+    url: https://developer.travis-ci.com/authentication
+- aid: travis-ci:v2
+  name: Travis CI REST API v2.1 (deprecated)
+  description: >-
+    Legacy v2/v2.1 REST API; superseded by v3 but still in use. Builds, jobs, branches, logs, env vars,
+    caches, SSH keys, requests. Authenticated via Bearer access tokens exchanged with GitHub.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.travis-ci.com/api/
+  baseURL: https://api.travis-ci.com
+  tags:
+  - REST
+  - v2.1
+  - Deprecated
+  - Builds
+  properties:
+  - type: Documentation
+    url: https://docs.travis-ci.com/api/
+  - type: DeprecationNotice
+    url: https://blog.travis-ci.com/2018-01-22-api-v2.1-deprecation
+- aid: travis-ci:travis-ci-builds-api
+  name: Travis CI Builds API
+  description: The Builds API from Travis CI — 3 operation(s) for builds.
+  humanURL: https://developer.travis-ci.com/
+  baseURL: https://api.travis-ci.com
+  tags:
+  - Builds
+  properties:
+  - type: OpenAPI
+    url: openapi/travis-ci-builds-api-openapi.yml
+- aid: travis-ci:travis-ci-jobs-api
+  name: Travis CI Jobs API
+  description: The Jobs API from Travis CI — 4 operation(s) for jobs.
+  humanURL: https://developer.travis-ci.com/
+  baseURL: https://api.travis-ci.com
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/travis-ci-jobs-api-openapi.yml
+- aid: travis-ci:travis-ci-logs-api
+  name: Travis CI Logs API
+  description: The Logs API from Travis CI — 1 operation(s) for logs.
+  humanURL: https://developer.travis-ci.com/
+  baseURL: https://api.travis-ci.com
+  tags:
+  - Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/travis-ci-logs-api-openapi.yml
+- aid: travis-ci:travis-ci-organizations-api
+  name: Travis CI Organizations API
+  description: The Organizations API from Travis CI — 4 operation(s) for organizations.
+  humanURL: https://developer.travis-ci.com/
+  baseURL: https://api.travis-ci.com
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/travis-ci-organizations-api-openapi.yml
+- aid: travis-ci:travis-ci-repositories-api
+  name: Travis CI Repositories API
+  description: The Repositories API from Travis CI — 6 operation(s) for repositories.
+  humanURL: https://developer.travis-ci.com/
+  baseURL: https://api.travis-ci.com
+  tags:
+  - Repositories
+  properties:
+  - type: OpenAPI
+    url: openapi/travis-ci-repositories-api-openapi.yml
+- aid: travis-ci:travis-ci-users-api
+  name: Travis CI Users API
+  description: The Users API from Travis CI — 4 operation(s) for users.
+  humanURL: https://developer.travis-ci.com/
+  baseURL: https://api.travis-ci.com
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/travis-ci-users-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/travis-ci-agentic-access.yml
