@@ -1,0 +1,24 @@
+{
+  "provider": "travis-ci",
+  "sources": [
+    "travis-ci-builds-api-openapi.yml",
+    "travis-ci-jobs-api-openapi.yml",
+    "travis-ci-logs-api-openapi.yml",
+    "travis-ci-organizations-api-openapi.yml",
+    "travis-ci-repositories-api-openapi.yml",
+    "travis-ci-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "travis-ci-builds-api-openapi.yml",
+    "travis-ci-jobs-api-openapi.yml",
+    "travis-ci-logs-api-openapi.yml",
+    "travis-ci-organizations-api-openapi.yml",
+    "travis-ci-repositories-api-openapi.yml",
+    "travis-ci-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
