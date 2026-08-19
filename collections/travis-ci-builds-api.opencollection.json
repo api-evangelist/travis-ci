@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Travis CI REST API v3 Builds API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Builds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List builds for the current user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/builds"
+          },
+          "docs": "List builds for the current user"
+        },
+        {
+          "info": {
+            "name": "List builds for a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/repo/:provider/:repository_id/builds",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List builds for a repository"
+        },
+        {
+          "info": {
+            "name": "List builds for a repository by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/repo/:repository_id/builds",
+            "params": [
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List builds for a repository by id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

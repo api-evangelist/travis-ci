@@ -1,0 +1,139 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Travis CI REST API v3 Builds Repositories API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Repositories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Find a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/repo/:provider/:repository_id",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Find a repository"
+        },
+        {
+          "info": {
+            "name": "Find a repository by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/repo/:repository_id",
+            "params": [
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Find a repository by id"
+        },
+        {
+          "info": {
+            "name": "Activate a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.travis-ci.com/repo/:repository_id/activate",
+            "params": [
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Activate a repository"
+        },
+        {
+          "info": {
+            "name": "Deactivate a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.travis-ci.com/repo/:repository_id/deactivate",
+            "params": [
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deactivate a repository"
+        },
+        {
+          "info": {
+            "name": "Star a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.travis-ci.com/repo/:repository_id/star",
+            "params": [
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Star a repository"
+        },
+        {
+          "info": {
+            "name": "Unstar a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.travis-ci.com/repo/:repository_id/unstar",
+            "params": [
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Unstar a repository"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

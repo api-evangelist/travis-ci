@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Travis CI REST API v3 Builds Organizations API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Find an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/org/:organization_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Find an organization"
+        },
+        {
+          "info": {
+            "name": "Suspend an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.travis-ci.com/org/:organization_id/suspend",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Suspend an organization"
+        },
+        {
+          "info": {
+            "name": "Unsuspend an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.travis-ci.com/org/:organization_id/unsuspend",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Unsuspend an organization"
+        },
+        {
+          "info": {
+            "name": "Organization user activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.travis-ci.com/org/:organization_id/user_activity",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Organization user activity"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
