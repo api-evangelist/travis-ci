@@ -24,6 +24,13 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/travis-ci.
 tags:
   - DevOps
   - CI/CD
+  - Builds
+  - Open-Source
+  - Hosted
+  - GitHub
+tags_raw:
+  - DevOps
+  - CI/CD
   - Build
   - Open Source
   - Hosted
@@ -42,6 +49,12 @@ apis:
   humanURL: https://developer.travis-ci.com/
   baseURL: https://api.travis-ci.com
   tags:
+  - REST
+  - V3
+  - Builds
+  - Job
+  - Repos
+  tags_raw:
   - REST
   - v3
   - Builds
@@ -63,6 +76,10 @@ apis:
   humanURL: https://docs.travis-ci.com/api/
   baseURL: https://api.travis-ci.com
   tags:
+  - REST
+  - Deprecated
+  - Builds
+  tags_raw:
   - REST
   - v2.1
   - Deprecated
@@ -88,6 +105,8 @@ apis:
   humanURL: https://developer.travis-ci.com/
   baseURL: https://api.travis-ci.com
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
@@ -108,6 +127,8 @@ apis:
   humanURL: https://developer.travis-ci.com/
   baseURL: https://api.travis-ci.com
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -128,6 +149,8 @@ apis:
   humanURL: https://developer.travis-ci.com/
   baseURL: https://api.travis-ci.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
