@@ -7,6 +7,18 @@ description: >-
   GitLab and Bitbucket. Two REST APIs are available: the legacy v2/v2.1 API
   (deprecated) and the current v3 API used by the web UI. Travis CI is also
   available as Enterprise (on-premises) and Server (private cloud).
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
