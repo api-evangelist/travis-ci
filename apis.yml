@@ -62,7 +62,7 @@ apis:
   baseURL: https://api.travis-ci.com
   tags:
   - REST
-  - V3
+  - v3
   - Builds
   - Job
   - Repos
