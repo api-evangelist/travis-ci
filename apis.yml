@@ -90,6 +90,7 @@ apis:
   baseURL: https://api.travis-ci.com
   tags:
   - REST
+  - V2.1
   - Deprecated
   - Builds
   tags_raw:
