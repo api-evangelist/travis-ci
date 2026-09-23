@@ -1,14 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Travis CI REST API v3 Builds Organizations API
+  title: Travis CI REST API v3 Organizations API
   version: '3'
   description: 'Travis CI v3 REST API for builds, jobs, repositories, organizations, users,
 
     and logs. Endpoints and authentication derived from
 
-    https://developer.travis-ci.com/.
-
-    '
+    https://developer.travis-ci.com/.'
   contact:
     name: Travis CI
     url: https://developer.travis-ci.com/
@@ -36,6 +34,8 @@ paths:
       responses:
         '200':
           description: Organization
+      operationId: getOrgByOrganizationId
+      x-operation-id-source: derived
   /org/{organization_id}/suspend:
     post:
       tags:
@@ -50,6 +50,8 @@ paths:
       responses:
         '200':
           description: Suspended
+      operationId: postOrgByOrganizationIdSuspend
+      x-operation-id-source: derived
   /org/{organization_id}/unsuspend:
     post:
       tags:
@@ -64,6 +66,8 @@ paths:
       responses:
         '200':
           description: Unsuspended
+      operationId: postOrgByOrganizationIdUnsuspend
+      x-operation-id-source: derived
   /org/{organization_id}/user_activity:
     get:
       tags:
@@ -78,6 +82,8 @@ paths:
       responses:
         '200':
           description: Activity
+      operationId: getOrgByOrganizationIdUserActivity
+      x-operation-id-source: derived
 components:
   securitySchemes:
     TravisToken:

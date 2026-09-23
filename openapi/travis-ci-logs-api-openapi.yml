@@ -1,14 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Travis CI REST API v3 Builds Logs API
+  title: Travis CI REST API v3 Logs API
   version: '3'
   description: 'Travis CI v3 REST API for builds, jobs, repositories, organizations, users,
 
     and logs. Endpoints and authentication derived from
 
-    https://developer.travis-ci.com/.
-
-    '
+    https://developer.travis-ci.com/.'
   contact:
     name: Travis CI
     url: https://developer.travis-ci.com/
@@ -36,6 +34,8 @@ paths:
       responses:
         '200':
           description: Log
+      operationId: getJobByJobIdLog
+      x-operation-id-source: derived
     delete:
       tags:
       - Logs
@@ -49,6 +49,8 @@ paths:
       responses:
         '200':
           description: Deleted
+      operationId: deleteJobByJobIdLog
+      x-operation-id-source: derived
 components:
   securitySchemes:
     TravisToken:

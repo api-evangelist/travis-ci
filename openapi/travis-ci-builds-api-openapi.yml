@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Travis CI REST API v3 Builds API
   version: '3'
@@ -6,9 +6,7 @@ info:
 
     and logs. Endpoints and authentication derived from
 
-    https://developer.travis-ci.com/.
-
-    '
+    https://developer.travis-ci.com/.'
   contact:
     name: Travis CI
     url: https://developer.travis-ci.com/
@@ -30,6 +28,8 @@ paths:
       responses:
         '200':
           description: List of builds
+      operationId: getBuilds
+      x-operation-id-source: derived
   /repo/{provider}/{repository_id}/builds:
     get:
       tags:
@@ -49,6 +49,8 @@ paths:
       responses:
         '200':
           description: Builds
+      operationId: getRepoByProviderByRepositoryIdBuilds
+      x-operation-id-source: derived
   /repo/{repository_id}/builds:
     get:
       tags:
@@ -63,6 +65,8 @@ paths:
       responses:
         '200':
           description: Builds
+      operationId: getRepoByRepositoryIdBuilds
+      x-operation-id-source: derived
 components:
   securitySchemes:
     TravisToken:

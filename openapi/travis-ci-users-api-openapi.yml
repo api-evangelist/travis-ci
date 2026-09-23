@@ -1,14 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Travis CI REST API v3 Builds Users API
+  title: Travis CI REST API v3 Users API
   version: '3'
   description: 'Travis CI v3 REST API for builds, jobs, repositories, organizations, users,
 
     and logs. Endpoints and authentication derived from
 
-    https://developer.travis-ci.com/.
-
-    '
+    https://developer.travis-ci.com/.'
   contact:
     name: Travis CI
     url: https://developer.travis-ci.com/
@@ -30,6 +28,8 @@ paths:
       responses:
         '200':
           description: Current user
+      operationId: getUser
+      x-operation-id-source: derived
     patch:
       tags:
       - Users
@@ -37,6 +37,8 @@ paths:
       responses:
         '200':
           description: Updated
+      operationId: patchUser
+      x-operation-id-source: derived
   /user/{user_id}:
     get:
       tags:
@@ -51,6 +53,8 @@ paths:
       responses:
         '200':
           description: User
+      operationId: getUserByUserId
+      x-operation-id-source: derived
   /user/{user_id}/sync:
     post:
       tags:
@@ -65,6 +69,8 @@ paths:
       responses:
         '202':
           description: Sync triggered
+      operationId: postUserByUserIdSync
+      x-operation-id-source: derived
   /logout:
     get:
       tags:
@@ -73,6 +79,8 @@ paths:
       responses:
         '200':
           description: Logged out
+      operationId: getLogout
+      x-operation-id-source: derived
 components:
   securitySchemes:
     TravisToken:

@@ -1,12 +1,7 @@
 {
   "provider": "travis-ci",
   "sources": [
-    "travis-ci-builds-api-openapi.yml",
-    "travis-ci-jobs-api-openapi.yml",
-    "travis-ci-logs-api-openapi.yml",
-    "travis-ci-organizations-api-openapi.yml",
-    "travis-ci-repositories-api-openapi.yml",
-    "travis-ci-users-api-openapi.yml"
+    "_original/travis-ci-openapi.yml"
   ],
   "outputs": [
     "travis-ci-builds-api-openapi.yml",
@@ -19,6 +14,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "travis-ci-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "travis-ci-builds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "travis-ci-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "travis-ci-logs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "travis-ci-organizations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "travis-ci-repositories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "travis-ci-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
