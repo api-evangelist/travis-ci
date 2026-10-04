@@ -171,6 +171,9 @@ apis:
   - type: OpenAPI
     url: openapi/travis-ci-users-api-openapi.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/travis-ci-capability-edges.yml
+    name: Travis CI Business Capability Map
   - type: AgenticAccess
     url: agentic-access/travis-ci-agentic-access.yml
   - type: DomainSecurity

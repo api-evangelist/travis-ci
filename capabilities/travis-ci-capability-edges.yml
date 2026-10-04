@@ -1,0 +1,51 @@
+slug: travis-ci
+provider: Travis CI
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Builds
+  spec_file: travis-ci-builds-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.9
+  evidence: '"Travis CI is a hosted continuous integration service"; GET /repo/{repository_id}/builds
+    "List builds for a repository"'
+  reason: Builds in a hosted CI service are build pipeline runs — continuous integration management.
+- tag: Jobs
+  spec_file: travis-ci-jobs-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.88
+  evidence: POST /job/{job_id}/restart "Restart a job"; POST /job/{job_id}/debug "Debug a job"
+  reason: CI build jobs within build pipelines; cancel/restart/debug are pipeline execution controls,
+    i.e. continuous integration management.
+- tag: Logs
+  spec_file: travis-ci-logs-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.75
+  evidence: GET /job/{job_id}/log "Get a job log"
+  reason: Build job logs from the CI pipeline; supports CI build artefact/log inspection rather than production
+    observability.
+- tag: Repositories
+  spec_file: travis-ci-repositories-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.7
+  evidence: POST /repo/{repository_id}/activate "Activate a repository"
+  reason: Activating/deactivating a repository enables CI builds for it — configuration of the continuous
+    integration pipeline scope. Some ambiguity as it borders on source control admin.
